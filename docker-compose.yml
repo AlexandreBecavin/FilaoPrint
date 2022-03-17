@@ -1,0 +1,64 @@
+version: '3.7'
+services:
+    php:
+        build: ./docker/php
+        ports: 
+            - '9000:9000'
+        volumes: 
+            - './symfony/:/var/www/symfony:cached'
+        networks:
+            - filao
+    
+    nginx:
+        build: ./docker/nginx
+        ports: 
+            - "80:80"
+        volumes: 
+            - './symfony/:/var/www/symfony:cached'
+        networks:
+            - filao
+
+    pgsql:
+        image: 'postgres:13'
+        ports:
+            - '${FORWARD_DB_PORT:-5432}:5432'
+        environment:
+            PGPASSWORD: 'filao_pass'
+            POSTGRES_DB: 'filao_db'
+            POSTGRES_USER: 'filao_user'
+            POSTGRES_PASSWORD: 'filao_pass'
+        networks:
+            - filao
+        healthcheck:
+            test: ["CMD", "pg_isready", "-q", "-d", "filao_db", "-U", "filao_user"]
+            retries: 3
+            timeout: 5s
+
+    mailhog:
+        image: 'mailhog/mailhog:latest'
+        ports:
+            - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+            - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+        networks:
+            - filao
+
+    nuxt:
+        build:
+            context: ./app
+            dockerfile: DockerFile
+        volumes:
+            - ./app/:/app
+            - app_node_modules:/app/node_modules
+            - app_dotnuxt:/app/.nuxt
+        command: [yarn, dev]
+        ports:
+            - "3000:3000"
+        networks:
+            - filao
+
+networks:
+    filao:
+        driver: bridge
+volumes:
+    app_node_modules:
+    app_dotnuxt:
