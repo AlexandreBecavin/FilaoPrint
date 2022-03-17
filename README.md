@@ -3,6 +3,10 @@
 Installer docker
 Installer docker-compose
 
+Se connecter à la console docker PHP
+lancer la commande
+`composer install`
+
 ## Commande docker
 
 Build le projet
@@ -30,7 +34,6 @@ Mailhog: http://localhost:8025/
 
 PgAdmin: http://localhost:5050/
 
-
 # lancer des commandes Symfony
 
 Lancer l'invite de commande symfony
@@ -48,7 +51,7 @@ Voir les tables
 
 Pour pouvoir lancer des requettes sql
 `\timing`
- Après vous pouvez lancer vos requettes sql ex:
+Après vous pouvez lancer vos requettes sql ex:
 `SELECT * FROM USER`
 
 Avoir l'adresse ip du serveur de bdd
