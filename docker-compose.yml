@@ -6,6 +6,9 @@ services:
             - '9000:9000'
         volumes: 
             - './symfony/:/var/www/symfony:cached'
+        depends_on:
+            - pgsql
+            - mailhog
         networks:
             - filao
     
@@ -22,18 +25,31 @@ services:
         image: 'postgres:13'
         container_name: pgsql_container
         ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
+            - '5432:5432'
         environment:
             PGPASSWORD: 'filao_pass'
             POSTGRES_DB: 'filao_db'
             POSTGRES_USER: 'filao_user'
             POSTGRES_PASSWORD: 'filao_pass'
+        volumes:
+            - db-data:/var/lib/postgresql/data:rw
         networks:
             - filao
         healthcheck:
             test: ["CMD", "pg_isready", "-q", "-d", "filao_db", "-U", "filao_user"]
             retries: 3
             timeout: 5s
+
+    adminer:
+        image: adminer
+        restart: always
+        depends_on:
+            - pgsql
+        ports:
+            - 8080:8080
+        networks:
+            - filao
+
 
     mailhog:
         image: 'mailhog/mailhog:latest'
@@ -61,5 +77,8 @@ networks:
     filao:
         driver: bridge
 volumes:
+    php:
+    nginx:
+    db-data: {}
     app_node_modules:
     app_dotnuxt:

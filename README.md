@@ -1,11 +1,19 @@
 # Installation du projet
 
-Installer docker
-Installer docker-compose
+* Installer docker
+* Installer docker-compose
+* Ouvrez la console dans le repertoire de votre projet et executé les commandes suivantes
+    ```
+    docker-compose build
+    docker-compose up -d
+    ```
 
-Se connecter à la console docker PHP
-lancer la commande
-`composer install`
+* installer les dependances symfony
+    ```
+    docker compose exec php sh
+    composer install
+    exit
+    ```
 
 ## Commande docker
 
@@ -34,12 +42,22 @@ Mailhog: http://localhost:8025/
 
 PgAdmin: http://localhost:5050/
 
+Adminer SQL: http://localhost:8080/
+
 # lancer des commandes Symfony
 
 Lancer l'invite de commande symfony
 `docker compose exec php sh`
 
 Une fois dans la console lancer les commades symfony normalement
+
+# Se connecter à l'adminer
+
+1. Système: PostgreSQL
+2. Serveur: pgsql
+3. Utilisateur: filao_user
+4. Mot de passe: filao_pass
+5. Base de données: filao_db
 
 # Utiliser Pgsql via cmd
 
