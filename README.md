@@ -41,7 +41,7 @@ Une fois dans la console lancer les commades symfony normalement
 # Utiliser Pgsql via cmd
 
 Se connecter a pgsql via cmd
-`docker exec -it pgsql_container psql -U root filaoprint`
+`docker exec -it pgsql_container psql -U filao_user filao_db`
 
 Voir les tables
 `\dt`

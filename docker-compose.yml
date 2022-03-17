@@ -20,6 +20,7 @@ services:
 
     pgsql:
         image: 'postgres:13'
+        container_name: pgsql_container
         ports:
             - '${FORWARD_DB_PORT:-5432}:5432'
         environment:
