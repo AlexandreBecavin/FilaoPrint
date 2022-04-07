@@ -11,9 +11,6 @@ class Role
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-    #[ORM\Column(type: 'integer')]
     private $id_role;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -22,21 +19,9 @@ class Role
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getIdRole(): ?int
     {
         return $this->id_role;
-    }
-
-    public function setIdRole(int $id_role): self
-    {
-        $this->id_role = $id_role;
-
-        return $this;
     }
 
     public function getCode(): ?string

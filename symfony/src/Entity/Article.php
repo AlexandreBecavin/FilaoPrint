@@ -11,9 +11,6 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-    #[ORM\Column(type: 'integer')]
     private $id_article;
 
     #[ORM\Column(type: 'integer')]
@@ -31,21 +28,9 @@ class Article
     #[ORM\Column(type: 'string', length: 255)]
     private $volume;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getIdArticle(): ?int
     {
         return $this->id_article;
-    }
-
-    public function setIdArticle(int $id_article): self
-    {
-        $this->id_article = $id_article;
-
-        return $this;
     }
 
     public function getIdUser(): ?int

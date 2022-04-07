@@ -11,9 +11,6 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-    #[ORM\Column(type: 'integer')]
     private $id_category;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -22,21 +19,9 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $code;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getIdCategory(): ?int
     {
         return $this->id_category;
-    }
-
-    public function setIdCategory(int $id_category): self
-    {
-        $this->id_category = $id_category;
-
-        return $this;
     }
 
     public function getName(): ?string

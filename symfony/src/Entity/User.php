@@ -12,9 +12,6 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-    #[ORM\Column(type: 'integer')]
     private $id_user;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -29,22 +26,11 @@ class User
     #[ORM\Column(type: 'datetime_immutable')]
     private $created_at;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getIdUser(): ?int
     {
         return $this->id_user;
     }
 
-    public function setIdUser(int $id_user): self
-    {
-        $this->id_user = $id_user;
-
-        return $this;
-    }
 
     public function getIdRole(): ?int
     {

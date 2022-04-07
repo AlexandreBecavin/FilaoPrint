@@ -11,9 +11,6 @@ class Transaction
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-    #[ORM\Column(type: 'integer')]
     private $id_transaction;
 
     #[ORM\Column(type: 'float', nullable: true)]
@@ -37,21 +34,9 @@ class Transaction
     #[ORM\Column(type: 'string', length: 255)]
     private $status;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getIdTransaction(): ?int
     {
         return $this->id_transaction;
-    }
-
-    public function setIdTransaction(int $id_transaction): self
-    {
-        $this->id_transaction = $id_transaction;
-
-        return $this;
     }
 
     public function getProductPrice(): ?float
