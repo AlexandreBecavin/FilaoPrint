@@ -11,6 +11,8 @@ RUN wget https://getcomposer.org/installer -O - | php -- --install-dir=/usr/loca
 ADD php.ini /usr/local/etc/php/php.ini
 ADD php-fpm.conf /etc/php/php-fpm.d/
 
+RUN usermod -u [USERID] www-data 
+
 WORKDIR /var/www/symfony
 
 EXPOSE 9000
