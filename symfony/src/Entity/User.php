@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -12,58 +14,53 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id_user;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private $id_role;
+    #[Groups(['user:output'])]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Mail;
+    #[Groups(['user:output'])]
+    #[Assert\NotBlank(message: "l'adresse mail est obigatoire")]
+    private $mail;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Password;
+    #[Assert\NotBlank(message: "le mot de passe est obligatoire")]
+    private $password;
 
     #[ORM\Column(type: 'datetime_immutable')]
     private $created_at;
 
-    public function getIdUser(): ?int
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $token;
+
+    #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'role')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $role;
+
+    public function getId(): ?int
     {
-        return $this->id_user;
-    }
-
-
-    public function getIdRole(): ?int
-    {
-        return $this->id_role;
-    }
-
-    public function setIdRole(?int $id_role): self
-    {
-        $this->id_role = $id_role;
-
-        return $this;
+        return $this->id;
     }
 
     public function getMail(): ?string
     {
-        return $this->Mail;
+        return $this->mail;
     }
 
-    public function setMail(string $Mail): self
+    public function setMail(string $mail): self
     {
-        $this->Mail = $Mail;
+        $this->mail = $mail;
 
         return $this;
     }
 
     public function getPassword(): ?string
     {
-        return $this->Password;
+        return $this->password;
     }
 
-    public function setPassword(string $Password): self
+    public function setPassword(string $password): self
     {
-        $this->Password = $Password;
+        $this->password = $password;
 
         return $this;
     }
@@ -76,6 +73,30 @@ class User
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

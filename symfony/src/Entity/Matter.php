@@ -10,7 +10,7 @@ class Matter
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(name: "id_matter", type: 'integer')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]

@@ -10,8 +10,8 @@ class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id_category;
+    #[ORM\Column(name: "id_category", type: 'integer')]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
@@ -19,9 +19,9 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $code;
 
-    public function getIdCategory(): ?int
+    public function getId(): ?int
     {
-        return $this->id_category;
+        return $this->id;
     }
 
     public function getName(): ?string

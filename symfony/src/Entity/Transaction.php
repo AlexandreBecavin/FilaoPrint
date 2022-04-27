@@ -10,8 +10,8 @@ class Transaction
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id_transaction;
+    #[ORM\Column(name: "id_transaction", type: 'integer')]
+    private $id;
 
     #[ORM\Column(type: 'float', nullable: true)]
     private $product_price;
@@ -34,9 +34,9 @@ class Transaction
     #[ORM\Column(type: 'string', length: 255)]
     private $status;
 
-    public function getIdTransaction(): ?int
+    public function getId(): ?int
     {
-        return $this->id_transaction;
+        return $this->id;
     }
 
     public function getProductPrice(): ?float

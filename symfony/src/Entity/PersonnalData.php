@@ -10,8 +10,8 @@ class PersonnalData
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id_user;
+    #[ORM\Column(name: "id_personnal_data", type: 'integer')]
+    private $id;
 
     #[ORM\Column(type: 'integer')]
     private $id_info_perso;
@@ -34,9 +34,9 @@ class PersonnalData
     #[ORM\Column(type: 'integer')]
     private $theme;
 
-    public function getIdUser(): ?int
+    public function getId(): ?int
     {
-        return $this->id_user;
+        return $this->id;
     }
 
     public function getIdInfoPerso(): ?int

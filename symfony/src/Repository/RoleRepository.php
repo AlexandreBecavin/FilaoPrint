@@ -45,6 +45,42 @@ class RoleRepository extends ServiceEntityRepository
         }
     }
 
+     /**
+    * @return Role Return one Role by ID
+    */
+    public function findOneRoleByID(int $id_role){
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT id_role AS id, code, name
+            FROM "role" AS "r" 
+            WHERE id_role = :id_role
+            ';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['id_role' => $id_role]);
+
+        return $resultSet->fetchAssociative();
+    }
+
+    /**
+     * @return Role Return one role by code
+     */
+
+    public function findByCode(string $code){
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT *
+            FROM "role" 
+            WHERE code = :code
+            ';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['code' => $code]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
+
     // /**
     //  * @return Role[] Returns an array of Role objects
     //  */

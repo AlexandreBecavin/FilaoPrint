@@ -45,6 +45,42 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+    * @return User[] Returns all user in array
+    */
+    public function findAllUser(){
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT u.id_user, u.mail, u.created_at, r.id_role, r.code, r.name
+            FROM "user" AS "u" 
+            INNER JOIN "role" AS "r" ON r.id_role = u.id_role
+            ORDER BY u.mail ASC
+            ';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
+
+    /**
+    * @return User Return user selected with id
+    */
+    public function findOneUser($id){
+        $qb = $this->createQueryBuilder('c');
+        
+        $query = $qb->andWhere('c.id_user = :val')
+            ->setParameter('val', $id)
+            ->getQuery();
+            
+        $test =  $query->getResult();
+        var_dump($test);
+        return $test;
+    }
+
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

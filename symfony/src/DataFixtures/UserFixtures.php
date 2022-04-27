@@ -15,13 +15,21 @@ class UserFixtures extends Fixture
         $date = new DateTimeImmutable('', new DateTimeZone('Europe/Paris'));
 
         $user = new User();
-        $user->setIdRole(1);
-        $user->setMail('AB@gmail.com');
+        $user->setMail('alex@filao.com');
         $user->setPassword('non');
         $user->setCreatedAt($date);
+        $user->setRole($this->getReference('admin'));
 
         $manager->persist($user);
 
         $manager->flush();
     }
+
+    public function getDependencies()
+    {
+        return [
+            RoleFixtures::class,
+        ];
+    }
+
 }

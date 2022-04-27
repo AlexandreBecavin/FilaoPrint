@@ -98,6 +98,18 @@
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
+    "phpdocumentor/reflection-common": {
+        "version": "2.2.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.3.0"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.6.1"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "1.4.4"
+    },
     "psr/cache": {
         "version": "3.0.0"
     },
@@ -216,6 +228,12 @@
     "symfony/polyfill-php81": {
         "version": "v1.25.0"
     },
+    "symfony/property-access": {
+        "version": "v6.0.7"
+    },
+    "symfony/property-info": {
+        "version": "v6.0.7"
+    },
     "symfony/proxy-manager-bridge": {
         "version": "v6.0.6"
     },
@@ -235,6 +253,9 @@
     "symfony/runtime": {
         "version": "v6.0.5"
     },
+    "symfony/serializer": {
+        "version": "v6.0.7"
+    },
     "symfony/service-contracts": {
         "version": "v3.0.0"
     },
@@ -244,6 +265,21 @@
     "symfony/string": {
         "version": "v6.0.3"
     },
+    "symfony/translation-contracts": {
+        "version": "v3.0.1"
+    },
+    "symfony/validator": {
+        "version": "6.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.3",
+            "ref": "c32cfd98f714894c4f128bb99aa2530c1227603c"
+        },
+        "files": [
+            "config/packages/validator.yaml"
+        ]
+    },
     "symfony/var-dumper": {
         "version": "v6.0.6"
     },
@@ -252,5 +288,8 @@
     },
     "symfony/yaml": {
         "version": "v6.0.3"
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
     }
 }
