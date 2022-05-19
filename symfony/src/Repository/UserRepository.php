@@ -52,9 +52,9 @@ class UserRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-            SELECT u.id_user, u.mail, u.created_at, r.id_role, r.code, r.name
+            SELECT u.id, u.mail, u.created_at, r.id, r.code, r.name
             FROM "user" AS "u" 
-            INNER JOIN "role" AS "r" ON r.id_role = u.id_role
+            INNER JOIN "role" AS "r" ON r.id = u.id
             ORDER BY u.mail ASC
             ';
         $stmt = $conn->prepare($sql);
