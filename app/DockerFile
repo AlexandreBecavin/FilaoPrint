@@ -1,7 +1,16 @@
 FROM node:14-alpine
+ENV NODE_ENV=development
+
 WORKDIR /app
+
+EXPOSE 3000
 
 COPY package.json ./
 COPY yarn.lock ./
 
 RUN yarn
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=3000
+
+CMD ["yarn", "dev"]

@@ -8,12 +8,14 @@
     docker-compose up -d
     ```
 
-* installer les dependances symfony
+* installer les dependances symfony / migration / lancement fixtures
     ```
     docker compose exec php sh
     composer install
+    php bin/console doctrine:migrations:migrate
     exit
     ```
+    Voir les commande doctrine: `php bin/console doctrine`
 
 ## Commande docker
 
@@ -51,6 +53,8 @@ Lancer l'invite de commande symfony
 
 Une fois dans la console lancer les commades symfony normalement
 
+créer une migration: ```php bin/console make:migration```
+
 # Se connecter à l'adminer
 
 1. Système: PostgreSQL
@@ -74,3 +78,11 @@ Après vous pouvez lancer vos requettes sql ex:
 
 Avoir l'adresse ip du serveur de bdd
 `docker inspect pgsql_container | grep IPAddress`
+
+# Lancer les fixtures
+ ```
+    docker compose exec php sh
+    php bin/console doctrine:fixtures:load
+    exit
+```
+

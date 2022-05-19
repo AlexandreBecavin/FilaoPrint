@@ -12,6 +12,18 @@ ADD php.ini /usr/local/etc/php/php.ini
 ADD php-fpm.conf /etc/php/php-fpm.d/
 
 WORKDIR /var/www/symfony
+# Create a user group 'xyzgroup'
+RUN addgroup -S filaogroup
+
+# Create a user 'appuser' under 'xyzgroup'
+RUN adduser -S -D -h /var/www/symfony filao filaogroup
+
+# Chown all the files to the app user.
+RUN chown -R filao:filaogroup /var/www
+
+# Switch to 'appuser'
+USER filao
+
 
 EXPOSE 9000
 
