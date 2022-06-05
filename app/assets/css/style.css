@@ -2,11 +2,13 @@
     --bg-color: #FFF;
     --primary: #2C3C4B;
     --secondary: #1C9A97;
+    --dot: #F5C36E;
 }
 :root[data-theme="theme-dark"] {
     --bg-color: #2C3C4B;
     --primary: #fff;
     --secondary: #1C9A97;
+    --dot: #F5C36E;
 }
 
 @font-face {
