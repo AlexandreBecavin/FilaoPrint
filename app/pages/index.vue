@@ -28,6 +28,10 @@
 </script>
 
 <style>
+    .accueil{
+        margin-bottom: 3rem;
+    }
+
     .video{
         height: auto;
         width: 100%;

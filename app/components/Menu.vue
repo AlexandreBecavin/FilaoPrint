@@ -11,12 +11,12 @@
                     <Search class='icon_menu'/>
                 </div>
             </NuxtLink>
-            <NuxtLink to="/#hjvfhsv">
+            <NuxtLink to="/inscription">
                 <div class='bg_icon'>
                     <More class='icon_menu'/>
                 </div>
             </NuxtLink>
-            <NuxtLink to="/#test">
+            <NuxtLink to="/pannier">
                 <div class='bg_icon'>
                     <Bag class='icon_menu'/>
                 </div>
