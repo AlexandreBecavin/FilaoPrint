@@ -1,12 +1,23 @@
 :root[data-theme="theme-light"] {
     --bg-color: #FFF;
+    --bg-color-light: #F5F5F5;
     --primary: #2C3C4B;
     --secondary: #1C9A97;
+    --btn: #1C9A97; 
+    --text-inverse: #fff;
 }
 :root[data-theme="theme-dark"] {
-    --bg-color: #2C3C4B;
+    --bg-color: #283441;
+    --bg-color-light: #2C3C4B;
     --primary: #fff;
     --secondary: #1C9A97;
+    --btn: #F5C36E;
+    --text-inverse: #2C3C4B;
+}
+
+:root {
+    --dot: #F5C36E;
+    --input: #fff;
 }
 
 @font-face {
@@ -20,7 +31,7 @@ body{
     transition: 1s;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span, button{
+h1, h2, h3, h4, h5, h6, p, a, span, button, label, input{
     color: var(--primary);
     transition: 1s;
     font-family: "Mundial";
@@ -39,8 +50,16 @@ h1, h2, h3, h4, h5, h6{
 .button{
     padding: 1rem 2rem;
     border-radius: 2rem;
-    background-color: var(--secondary);
-    color: white;
+    background-color: var(--btn);
+    color: var(--text-inverse);
     text-decoration: none;
 }
 
+input{
+    background-color: var(--input);
+    color: #2C3C4B;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
